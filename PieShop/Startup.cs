@@ -16,11 +16,10 @@ namespace PieShop
     {        
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
-            services.AddScoped<IPieRepository, MockPieRepository>();
-
             services.AddMvc();
 
+            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+            services.AddScoped<IPieRepository, MockPieRepository>();
         }
        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -30,16 +29,26 @@ namespace PieShop
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
+            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
+            
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/", async context =>
+            //    {
+            //        await context.Response.WriteAsync("Hello World!");
+            //    });
+            //});
         }
     }
 }

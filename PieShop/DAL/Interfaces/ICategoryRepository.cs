@@ -1,11 +1,12 @@
 ﻿using PieShop.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PieShop.DAL.Interfaces
 {
     public interface ICategoryRepository
     {
-        IQueryable<Category> GetAllCategories();
+        IEnumerable<Category> GetAllCategories();
 
         Category GetCategoryById(int id);   
 
