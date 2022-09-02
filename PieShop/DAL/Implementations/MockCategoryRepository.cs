@@ -24,17 +24,17 @@ namespace PieShop.DAL.Implementations
 
         public IEnumerable<Category> GetAllCategories()
         {
-            throw new System.NotImplementedException();
+            return MockCategories;
         }
 
         public Category GetCategoryById(int id)
-        {
-            throw new System.NotImplementedException();
+        { 
+            return MockCategories.FirstOrDefault( cat => cat.Id == id);
         }
 
-        public Category GetCategoryByName(string name)
+        public IEnumerable<Category> GetCategoryByName(string name)
         {
-            throw new System.NotImplementedException();
+            return MockCategories.Where( cat => cat.Name.StartsWith(name));
         }
     }
 }

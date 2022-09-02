@@ -8,8 +8,8 @@ namespace PieShop.DAL.Interfaces
     {
         IEnumerable<Category> GetAllCategories();
 
-        Category GetCategoryById(int id);   
+        Category GetCategoryById(int id);
 
-        Category GetCategoryByName(string name);
+        IEnumerable<Category> GetCategoryByName(string name);
     }
 }
