@@ -1,4 +1,6 @@
-﻿namespace PieShop.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PieShop.Models
 {
     public class Pie
     {
@@ -18,6 +20,7 @@
 
         public string ImageThumbnailUrl { get; set; }
 
+        [Column(TypeName ="decimal(18,2)")]
         public bool IsPieOfTheWeek { get; set; }
 
         public bool InStock { get; set; }
