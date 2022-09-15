@@ -31,11 +31,11 @@ namespace PieShop
                 options.UseSqlServer(Configuration.GetConnectionString("PieShop"));
             });
 
-            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
-            services.AddScoped<IPieRepository, MockPieRepository>();
+            //services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+            //services.AddScoped<IPieRepository, MockPieRepository>();
 
-            //services.AddScoped<ICategoryRepository, CategoryRepositorySQL>();
-            //services.AddScoped<IPieRepository, PieRepositorySQL>();
+            services.AddScoped<ICategoryRepository, CategoryRepositorySQL>();
+            services.AddScoped<IPieRepository, PieRepositorySQL>();
 
             services.AddMvc();
         }
