@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PieShop.DAL.Interfaces;
+using PieShop.Models;
 using PieShop.ViewModels;
 
 namespace PieShop.Controllers
@@ -22,6 +23,16 @@ namespace PieShop.Controllers
             model.CurrentCategoryName = "Super";
 
             return View(model);
+        }
+
+        public IActionResult Detail(int id)
+        {
+            var pie = pieRepository.GetPieById(id);
+
+            if (pie == null)
+                return NotFound();
+
+            return View(pie);
         }
     }
 }

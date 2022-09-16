@@ -1,22 +1,25 @@
 ﻿@model PiesListViewModel
 
-<h1>@Model.CurrentCategoryName</h1>
+@{
+    ViewData["Title"] = "All pies";
+}
 
-    @foreach (var pie in Model.Pies)
-    {
-        <div class="col-sm-4 col-lg-4 col-md-4 col-xs-4">
-            <div class="thumbnail">
-                <img src="@pie.ImageThumbnailUrl" alt="">
-                <div class="caption">
-                    <h3 class="pull-right">@pie.Price.ToString("c")</h3>
-                    <h3>
-                        <a>@pie.Name</a>
-                    </h3>
-                    <p>@pie.ShortDescription</p>
-                </div>
+<h1>@Model.CurrentCategoryName</h1>
+@foreach (var pie in Model.Pies)
+{
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <img src="@pie.ImageThumbnailUrl" alt="">
+            <div class="caption">
+                <h3 class="pull-right">@pie.Price.ToString("c")/100g</h3>
+                <h3>
+                    <a asp-controller="Pie" asp-action="Detail" asp-route-id="@pie.Id">@pie.Name</a>
+                </h3>
+                <p>@pie.ShortDescription</p>
             </div>
         </div>
-    }
+    </div>
+}
 
 
 

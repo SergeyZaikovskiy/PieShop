@@ -31,11 +31,11 @@ namespace PieShop
                 options.UseSqlServer(Configuration.GetConnectionString("PieShop"));
             });
 
-            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
-            services.AddScoped<IPieRepository, MockPieRepository>();
+            //services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+            //services.AddScoped<IPieRepository, MockPieRepository>();
 
-            //services.AddScoped<ICategoryRepository, CategoryRepositorySQL>();
-            //services.AddScoped<IPieRepository, PieRepositorySQL>();
+            services.AddScoped<ICategoryRepository, CategoryRepositorySQL>();
+            services.AddScoped<IPieRepository, PieRepositorySQL>();
 
             services.AddMvc();
         }
@@ -54,16 +54,8 @@ namespace PieShop
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Pie}/{action=List}/{id:int?}");
             });
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapGet("/", async context =>
-            //    {
-            //        await context.Response.WriteAsync("Hello World!");
-            //    });
-            //});
         }
     }
 }
