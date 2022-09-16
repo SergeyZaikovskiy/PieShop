@@ -54,7 +54,7 @@ namespace PieShop
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Pie}/{action=List}/{id:int?}");
+                    pattern: "{controller=Home}/{action=Index}/{id:int?}");
             });
         }
     }
