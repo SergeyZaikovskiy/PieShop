@@ -17,7 +17,7 @@ namespace PieShop.Controllers
         {
             var pieOfTheWeek = new HomeViewModel
             {
-                PiesOfTheWeek = pieRepository.PiesOfTheWeek()
+                PiesOfTheWeek = pieRepository.PiesOfTheWeek
             };        
             return View(pieOfTheWeek); 
         }

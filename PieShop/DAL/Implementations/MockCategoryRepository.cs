@@ -22,9 +22,12 @@ namespace PieShop.DAL.Implementations
             }
         }
 
-        public IEnumerable<Category> GetAllCategories()
+        public IEnumerable<Category> GetAllCategories
         {
-            return MockCategories;
+            get
+            {
+                return MockCategories;
+            }
         }
 
         public Category GetCategoryById(int id)

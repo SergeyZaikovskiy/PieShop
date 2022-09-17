@@ -5,9 +5,9 @@ namespace PieShop.DAL.Interfaces
 {
     public interface IPieRepository
     {
-        IEnumerable<Pie> GetAllPies();
+        IEnumerable<Pie> GetAllPies { get; }
 
-        IEnumerable<Pie> PiesOfTheWeek();  
+        IEnumerable<Pie> PiesOfTheWeek { get; } 
 
         Pie GetPieById(int id);
 

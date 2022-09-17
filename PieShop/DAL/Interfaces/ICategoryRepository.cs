@@ -6,7 +6,7 @@ namespace PieShop.DAL.Interfaces
 {
     public interface ICategoryRepository
     {
-        IEnumerable<Category> GetAllCategories();
+        IEnumerable<Category> GetAllCategories { get; }
 
         Category GetCategoryById(int id);
 

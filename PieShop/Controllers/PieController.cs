@@ -19,7 +19,7 @@ namespace PieShop.Controllers
         public IActionResult List()
         {
             var model = new PiesListViewModel();
-            model.Pies = pieRepository.GetAllPies();
+            model.Pies = pieRepository.GetAllPies;
             model.CurrentCategoryName = "Super";
 
             return View(model);
