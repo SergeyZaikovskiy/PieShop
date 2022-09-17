@@ -2,6 +2,7 @@
 using PieShop.DAL.Interfaces;
 using PieShop.Models;
 using PieShop.ViewModels;
+using System.Linq;
 
 namespace PieShop.Controllers
 {
@@ -16,11 +17,20 @@ namespace PieShop.Controllers
             this.category = category;
         }
 
-        public IActionResult List()
+        public IActionResult List(string categoryName)
         {
             var model = new PiesListViewModel();
-            model.Pies = pieRepository.GetAllPies;
-            model.CurrentCategoryName = "Super";
+
+            if (string.IsNullOrEmpty(categoryName))
+            {
+                model.Pies = pieRepository.GetAllPies;
+                model.CurrentCategoryName = "All pies";
+            }
+            else
+            {
+                model.Pies = pieRepository.GetAllPies.Where(p => p.Category.Name == categoryName);
+                model.CurrentCategoryName = categoryName;
+            }
 
             return View(model);
         }
