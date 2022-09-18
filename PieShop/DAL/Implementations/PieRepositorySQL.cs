@@ -14,7 +14,7 @@ namespace PieShop.DAL.Implementations
         {
             this.db = db;
         }
-        public IEnumerable<Pie> GetAllPies
+        public IQueryable<Pie> GetAllPies
         {
             get
             {

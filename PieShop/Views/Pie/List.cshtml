@@ -6,6 +6,18 @@
 
 <h1>@Model.CurrentCategoryName</h1>
 
+<br />
+@{
+    var routedata = new Dictionary<string, string>();
+    routedata.Add("categoryName", Model.CurrentCategoryName);
+
+    <sort action="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.NameSort">Name</sort>
+    <sort action="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.PriceSort">Price</sort>
+    <sort action="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.WeightSort">Weight</sort>
+}
+
+<br />
+
 @foreach (var pie in Model.Pies)
 {
     <partial name="Partial/_PieCard" model="pie" />
