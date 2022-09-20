@@ -15,6 +15,10 @@ namespace PieShop.Models
 
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
+        public DbSet<Order> Oreders{ get; set; }
+
+        public DbSet<OrderDetails> OrderDetails{ get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
