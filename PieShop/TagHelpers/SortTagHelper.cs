@@ -16,11 +16,13 @@ namespace PieShop.TagHelpers
 
         public SortPieState Property { get; set; }
 
-        public SortPieState Current{ get; set; }
-
-        public string Action { get; set; }
+        public SortPieState Current{ get; set; }     
 
         public bool Up { get; set; }
+
+        public string  ControllerName { get; set; }
+
+        public string  ActionName { get; set; }
 
         public Dictionary<string, string> RouteData { get; set; }
 
@@ -40,7 +42,8 @@ namespace PieShop.TagHelpers
 
             var query = CheckDataRoute(RouteData);
 
-            string url = urlHelper.Action(Action, new { sortOrder = Property });
+            string url = "/" + ControllerName + "/" + ActionName + query;
+
             output.Attributes.SetAttribute("href", url);
 
             if(Current == Property)

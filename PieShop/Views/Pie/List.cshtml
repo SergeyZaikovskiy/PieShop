@@ -11,9 +11,9 @@
     var routedata = new Dictionary<string, string>();
     routedata.Add("categoryName", Model.CurrentCategoryName);
 
-    <sort action="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.NameSort">Name</sort>
-    <sort action="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.PriceSort">Price</sort>
-    <sort action="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.WeightSort">Weight</sort>
+    <sort controller-name="Pie" action-name="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.NameSort">Name</sort>
+    <sort controller-name="Pie" action-name="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.PriceSort">Price</sort>
+    <sort controller-name="Pie" action-name="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.WeightSort">Weight</sort>
 }
 
 <br />
