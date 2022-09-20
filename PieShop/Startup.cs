@@ -36,6 +36,7 @@ namespace PieShop
 
             services.AddScoped<ICategoryRepository, CategoryRepositorySQL>();
             services.AddScoped<IPieRepository, PieRepositorySQL>();
+            services.AddScoped<IOrderRepository, OrderRepositorySQL>();
 
             services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
             services.AddHttpContextAccessor();
