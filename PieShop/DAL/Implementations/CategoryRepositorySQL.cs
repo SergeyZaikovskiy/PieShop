@@ -14,9 +14,12 @@ namespace PieShop.DAL.Implementations
             this.db = db;
         }
 
-        public IEnumerable<Category> GetAllCategories()
+        public IEnumerable<Category> GetAllCategories
         {
-            return db.Categories;
+            get
+            {
+                return db.Categories; 
+            }
         }
 
         public Category GetCategoryById(int id)

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PieShop.Models;
 
 namespace PieShop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220917065334_AddShoppingCard")]
+    partial class AddShoppingCard
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -271,9 +273,9 @@ namespace PieShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PieShop.Models.ShoppingCartItem", b =>
+            modelBuilder.Entity("PieShop.Models.ShoppingCardItem", b =>
                 {
-                    b.Property<int>("ShoppingCartItemId")
+                    b.Property<int>("ShoppingCardItemId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -284,14 +286,14 @@ namespace PieShop.Migrations
                     b.Property<int?>("PieId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ShoppingCartId")
+                    b.Property<string>("ShoppingCardId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ShoppingCartItemId");
+                    b.HasKey("ShoppingCardItemId");
 
                     b.HasIndex("PieId");
 
-                    b.ToTable("ShoppingCartItems");
+                    b.ToTable("ShoppingCardItems");
                 });
 
             modelBuilder.Entity("PieShop.Models.Pie", b =>
@@ -303,7 +305,7 @@ namespace PieShop.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PieShop.Models.ShoppingCartItem", b =>
+            modelBuilder.Entity("PieShop.Models.ShoppingCardItem", b =>
                 {
                     b.HasOne("PieShop.Models.Pie", "Pie")
                         .WithMany()

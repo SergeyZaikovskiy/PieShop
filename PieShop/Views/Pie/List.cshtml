@@ -5,20 +5,22 @@
 }
 
 <h1>@Model.CurrentCategoryName</h1>
+
+<br />
+@{
+    var routedata = new Dictionary<string, string>();
+    routedata.Add("categoryName", Model.CurrentCategoryName);
+
+    <sort controller-name="Pie" action-name="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.NameSort">Name</sort>
+    <sort controller-name="Pie" action-name="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.PriceSort">Price</sort>
+    <sort controller-name="Pie" action-name="List" route-data="@routedata" up="@Model.SortPieViewModel.Up" current="@Model.SortPieViewModel.Current" property="@Model.SortPieViewModel.WeightSort">Weight</sort>
+}
+
+<br />
+
 @foreach (var pie in Model.Pies)
 {
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="@pie.ImageThumbnailUrl" alt="">
-            <div class="caption">
-                <h3 class="pull-right">@pie.Price.ToString("c")/100g</h3>
-                <h3>
-                    <a asp-controller="Pie" asp-action="Detail" asp-route-id="@pie.Id">@pie.Name</a>
-                </h3>
-                <p>@pie.ShortDescription</p>
-            </div>
-        </div>
-    </div>
+    <partial name="Partial/_PieCard" model="pie" />
 }
 
 

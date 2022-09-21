@@ -1,13 +1,14 @@
 ﻿using PieShop.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PieShop.DAL.Interfaces
 {
     public interface IPieRepository
     {
-        IEnumerable<Pie> GetAllPies();
+        IQueryable<Pie> GetAllPies { get; }
 
-        IEnumerable<Pie> PiesOfTheWeek();  
+        IEnumerable<Pie> PiesOfTheWeek { get; } 
 
         Pie GetPieById(int id);
 

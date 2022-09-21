@@ -36,6 +36,11 @@ namespace PieShop
 
             services.AddScoped<ICategoryRepository, CategoryRepositorySQL>();
             services.AddScoped<IPieRepository, PieRepositorySQL>();
+            services.AddScoped<IOrderRepository, OrderRepositorySQL>();
+
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddHttpContextAccessor();
+            services.AddSession();
 
             services.AddMvc();
         }
@@ -48,13 +53,16 @@ namespace PieShop
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();            
-            app.UseRouting();
+            app.UseStaticFiles();
+            app.UseSession();
+            
+            app.UseRouting();           
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Pie}/{action=List}/{id:int?}");
+                    pattern: "{controller=Home}/{action=Index}/{id:int?}");
             });
         }
     }

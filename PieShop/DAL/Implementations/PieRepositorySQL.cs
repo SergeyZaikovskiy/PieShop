@@ -14,9 +14,12 @@ namespace PieShop.DAL.Implementations
         {
             this.db = db;
         }
-        public IEnumerable<Pie> GetAllPies()
+        public IQueryable<Pie> GetAllPies
         {
-            return db.Pies.Include(c => c.Category);
+            get
+            {
+                return db.Pies.Include(c => c.Category);
+            }
         }
 
         public Pie GetPieById(int id)
@@ -29,9 +32,12 @@ namespace PieShop.DAL.Implementations
             return db.Pies.Include(c => c.Category).Where( p => p.Name.StartsWith(name));
         }
 
-        public IEnumerable<Pie> PiesOfTheWeek()
+        public IEnumerable<Pie> PiesOfTheWeek
         {
-            return db.Pies.Include(c => c.Category).Where(p=>p.IsPieOfTheWeek);
+            get
+            {
+                return db.Pies.Include(c => c.Category).Where(p => p.IsPieOfTheWeek);
+            }
         }
 
         public void Commit()
