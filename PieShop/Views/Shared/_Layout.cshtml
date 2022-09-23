@@ -51,11 +51,10 @@
     <footer class="bg-light text-center text-lg-start">
         <div class="container">
             <vc:restaurant-count></vc:restaurant-count>
-            &copy; 2022 - Pie shp - <a asp-area="" asp-page="/Contact">Contact us</a>
+            &copy; 2022 - Pie shop - <a asp-controller="Contact" asp-action="Index">Contact us</a>
         </div>
     </footer>
 
     @await RenderSectionAsync("Scripts", required: false)
-
 </body>
 </html>

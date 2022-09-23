@@ -7,6 +7,6 @@
       WeightAsc,
       WeightDes,
       PriceAsc, 
-      PriceDes, 
+      PriceDesc, 
     }
 }

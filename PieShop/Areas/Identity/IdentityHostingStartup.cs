@@ -15,12 +15,6 @@ namespace PieShop.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("AppDbContextConnection")));
-
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<AppDbContext>();
             });
         }
     }
