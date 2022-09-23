@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,8 @@ namespace PieShop
                 options.UseSqlServer(Configuration.GetConnectionString("PieShop"));
             });
 
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
+
             //services.AddScoped<ICategoryRepository, MockCategoryRepository>();
             //services.AddScoped<IPieRepository, MockPieRepository>();
 
@@ -42,7 +45,8 @@ namespace PieShop
             services.AddHttpContextAccessor();
             services.AddSession();
 
-            services.AddMvc();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
         }
        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -56,13 +60,17 @@ namespace PieShop
             app.UseStaticFiles();
             app.UseSession();
             
-            app.UseRouting();           
-            
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id:int?}");
+
+                endpoints.MapRazorPages();
             });
         }
     }

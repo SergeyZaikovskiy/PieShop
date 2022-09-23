@@ -23,7 +23,7 @@ namespace PieShop.ViewModels
 
             Up = true;
             
-            if (state == SortPieState.NameDesc || state == SortPieState.PriceDes
+            if (state == SortPieState.NameDesc || state == SortPieState.PriceDesc
                 || state == SortPieState.WeightDes)
             {
                 Up = false;
@@ -35,9 +35,9 @@ namespace PieShop.ViewModels
                     Current = NameSort = SortPieState.NameAsc;
                     break;
                 case SortPieState.PriceAsc:
-                    Current = PriceSort = SortPieState.PriceDes;
+                    Current = PriceSort = SortPieState.PriceDesc;
                     break;
-                case SortPieState.PriceDes:
+                case SortPieState.PriceDesc:
                     Current = PriceSort = SortPieState.PriceAsc;
                     break;
                 case SortPieState.WeightAsc:

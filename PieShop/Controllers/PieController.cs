@@ -21,15 +21,18 @@ namespace PieShop.Controllers
             this.category = category;
         }
 
-        public async Task<IActionResult> List(string categoryName, SortPieState sortState)
+        public async Task<IActionResult> List(string categoryName, SortPieState sortValue = SortPieState.NameDesc)
         {
             var pies = pieRepository.GetAllPies;
 
-            pies = sortState switch
+            if(categoryName == "All pies")
+                categoryName = string.Empty;
+
+            pies = sortValue switch
             {
                 SortPieState.NameDesc =>  pies.Where(p => (!string.IsNullOrEmpty(categoryName)) ? p.Category.Name == categoryName : true).OrderByDescending(p => p.Name),
                 SortPieState.PriceAsc =>  pies.Where(p => (!string.IsNullOrEmpty(categoryName)) ? p.Category.Name == categoryName : true).OrderBy(p => p.Price),
-                SortPieState.PriceDes =>  pies.Where(p => (!string.IsNullOrEmpty(categoryName)) ? p.Category.Name == categoryName : true).OrderByDescending(p => p.Price),
+                SortPieState.PriceDesc =>  pies.Where(p => (!string.IsNullOrEmpty(categoryName)) ? p.Category.Name == categoryName : true).OrderByDescending(p => p.Price),
                 SortPieState.WeightAsc => pies.Where(p => (!string.IsNullOrEmpty(categoryName)) ? p.Category.Name == categoryName : true).OrderBy(p => p.Weight),
                 SortPieState.WeightDes => pies.Where(p => (!string.IsNullOrEmpty(categoryName)) ? p.Category.Name == categoryName : true).OrderByDescending(p => p.Weight),
                 _ => pies.Where(p => (!string.IsNullOrEmpty(categoryName)) ? p.Category.Name == categoryName : true).OrderBy(p => p.Name),
@@ -41,7 +44,7 @@ namespace PieShop.Controllers
             {
                 Pies = await pies.AsNoTracking().ToListAsync(),
                 CurrentCategoryName = currentCategory,
-                SortPieViewModel = new SortPieViewModel(sortState)
+                SortPieViewModel = new SortPieViewModel(sortValue)
             };
            
             return View(model);
